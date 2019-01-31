@@ -189,7 +189,7 @@ def git_diff(git_args, old_path, new_path):
         if not os.path.isfile(old_file):
             old_file = "/dev/null"
         diff = subprocess.Popen(
-            ['git', 'diff', '--diff-filter=MA', '--color', old_file, new_file],
+            ['git', 'diff', '--diff-filter=MA', '--color'] + git_args + [old_file, new_file],
             stdout=subprocess.PIPE)
         diff.wait()
         diff_out = diff.stdout.read()
